@@ -1,7 +1,4 @@
-"""
-STEP 1: Generate sample transportation data
-This script creates realistic CSV files for UrbanMove Analytics
-"""
+
 
 import pandas as pd
 import random
@@ -45,7 +42,7 @@ def generate_ridership_data(num_records=200):
     
     df = pd.DataFrame(data)
     df.to_csv('data/ridership.csv', index=False)
-    print(f"✅ Generated ridership.csv with {len(df)} records (includes duplicates)")
+    print(f" Generated ridership.csv with {len(df)} records (includes duplicates)")
     return df
 
 
@@ -81,7 +78,7 @@ def generate_vehicle_locations(num_records=150):
     
     df = pd.DataFrame(data)
     df.to_csv('data/vehicle_locations.csv', index=False)
-    print(f"✅ Generated vehicle_locations.csv with {len(df)} records")
+    print(f" Generated vehicle_locations.csv with {len(df)} records")
     return df
 
 
@@ -107,13 +104,13 @@ def generate_weather_data(num_records=180):
     
     df = pd.DataFrame(data)
     df.to_csv('data/weather.csv', index=False)
-    print(f"✅ Generated weather.csv with {len(df)} records")
+    print(f" Generated weather.csv with {len(df)} records")
     return df
 
 
 if __name__ == "__main__":
-    print("🚌 UrbanMove Analytics - Generating sample data...\n")
+    print(" UrbanMove Analytics - Generating sample data...\n")
     generate_ridership_data()
     generate_vehicle_locations()
     generate_weather_data()
-    print("\n✅ All data files created in /data folder!")
+    print("\n All data files created in /data folder!")
