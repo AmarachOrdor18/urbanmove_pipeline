@@ -1,10 +1,4 @@
-"""
-STEP 4: Apache Airflow DAG
-This file tells Airflow HOW and WHEN to run our pipeline automatically.
 
-A DAG (Directed Acyclic Graph) is a workflow definition.
-Each 'task' in the DAG is one step in the pipeline.
-"""
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
