@@ -1,12 +1,3 @@
-"""
-STEP 3: ETL Pipeline
-Extract → Transform (Clean) → Load into PostgreSQL
-
-This is the main pipeline script that:
-1. Reads CSV files (Extract)
-2. Cleans and validates data (Transform)  
-3. Loads into PostgreSQL (Load)
-"""
 
 import pandas as pd
 import psycopg2
@@ -54,7 +45,7 @@ def extract_weather():
 
 def transform_ridership(df):
     """Clean and validate ridership data"""
-    print("\n🔄 Transforming ridership data...")
+    print("\nTransforming ridership data...")
     original_count = len(df)
     
     # 1. Remove duplicate trip_ids
@@ -87,7 +78,7 @@ def transform_ridership(df):
 
 def transform_vehicle_locations(df):
     """Clean and validate vehicle location data"""
-    print("\n🔄 Transforming vehicle location data...")
+    print("\n Transforming vehicle location data...")
     original_count = len(df)
     
     # 1. Remove records with invalid coordinates
@@ -117,7 +108,7 @@ def transform_vehicle_locations(df):
 
 def transform_weather(df):
     """Clean and validate weather data"""
-    print("\n🔄 Transforming weather data...")
+    print("\n Transforming weather data...")
     
     # 1. Convert weather_date to date
     df['weather_date'] = pd.to_datetime(df['weather_date']).dt.date
@@ -144,13 +135,13 @@ def transform_weather(df):
 
 def validate_data(df, table_name):
     """Run basic data quality checks before loading"""
-    print(f"\n✅ Validating {table_name}...")
+    print(f"\n Validating {table_name}...")
     
     checks_passed = True
     
     # Check 1: No empty dataframe
     if len(df) == 0:
-        print(f"   ❌ FAIL: {table_name} has no records!")
+        print(f"   FAIL: {table_name} has no records!")
         checks_passed = False
     else:
         print(f"   ✓ Record count check passed: {len(df)} records")
@@ -159,7 +150,7 @@ def validate_data(df, table_name):
     null_pct = df.isnull().mean() * 100
     high_null_cols = null_pct[null_pct > 50]
     if len(high_null_cols) > 0:
-        print(f"   ⚠️  WARNING: Columns with >50% nulls: {list(high_null_cols.index)}")
+        print(f"   WARNING: Columns with >50% nulls: {list(high_null_cols.index)}")
     else:
         print(f"   ✓ Null check passed")
     
@@ -167,7 +158,7 @@ def validate_data(df, table_name):
     if 'passenger_count' in df.columns:
         negative = (df['passenger_count'] < 0).sum()
         if negative > 0:
-            print(f"   ❌ FAIL: {negative} negative passenger counts found!")
+            print(f"   FAIL: {negative} negative passenger counts found!")
             checks_passed = False
         else:
             print(f"   ✓ Passenger count values are valid")
@@ -186,7 +177,7 @@ def get_connection():
 
 def load_ridership(df):
     """Load ridership data into PostgreSQL"""
-    print("\n📤 Loading ridership data into PostgreSQL...")
+    print("\n Loading ridership data into PostgreSQL...")
     
     conn = get_connection()
     cursor = conn.cursor()
@@ -227,7 +218,7 @@ def load_ridership(df):
 
 def load_vehicle_locations(df):
     """Load vehicle location data into PostgreSQL"""
-    print("\n📤 Loading vehicle location data into PostgreSQL...")
+    print("\n Loading vehicle location data into PostgreSQL...")
     
     conn = get_connection()
     cursor = conn.cursor()
@@ -263,7 +254,7 @@ def load_vehicle_locations(df):
 
 def load_weather(df):
     """Load weather data into PostgreSQL"""
-    print("\n📤 Loading weather data into PostgreSQL...")
+    print("\n Loading weather data into PostgreSQL...")
     
     conn = get_connection()
     cursor = conn.cursor()
@@ -306,7 +297,7 @@ def run_pipeline():
     """Run the complete ETL pipeline"""
     start_time = datetime.now()
     print("=" * 60)
-    print("🚌 URBANMOVE ANALYTICS - ETL PIPELINE STARTING")
+    print(" URBANMOVE ANALYTICS - ETL PIPELINE STARTING")
     print(f"   Run time: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
     
@@ -333,11 +324,11 @@ def run_pipeline():
         duration = (end_time - start_time).seconds
         
         print("\n" + "=" * 60)
-        print(f"✅ PIPELINE COMPLETED SUCCESSFULLY in {duration}s")
+        print(f" PIPELINE COMPLETED SUCCESSFULLY in {duration}s")
         print("=" * 60)
         
     except Exception as e:
-        print(f"\n❌ PIPELINE FAILED: {e}")
+        print(f"\n PIPELINE FAILED: {e}")
         raise
 
 
