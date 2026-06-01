@@ -1,8 +1,8 @@
-# 🚌 UrbanMove Pipeline
+# UrbanMove Pipeline
 
 A comprehensive **ETL (Extract-Transform-Load) pipeline** for urban transportation analytics. This project automates the collection, processing, and analysis of ridership data, vehicle GPS locations, and weather conditions using Apache Airflow.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Project Overview](#project-overview)
 - [Architecture](#architecture)
@@ -14,7 +14,7 @@ A comprehensive **ETL (Extract-Transform-Load) pipeline** for urban transportati
 - [Configuration](#configuration)
 - [Troubleshooting](#troubleshooting)
 
-## 🎯 Project Overview
+## Project Overview
 
 UrbanMove Pipeline is designed to:
 
@@ -26,14 +26,14 @@ UrbanMove Pipeline is designed to:
 
 ### Key Features
 
-✅ Automated daily data processing  
-✅ Multi-source data integration (ridership, vehicle locations, weather)  
-✅ Data quality validation and cleaning  
-✅ PostgreSQL persistence with optimized schema  
-✅ Apache Airflow orchestration with scheduling  
-✅ Comprehensive logging and error handling  
+- Automated daily data processing  
+- Multi-source data integration (ridership, vehicle locations, weather)  
+- Data quality validation and cleaning  
+- PostgreSQL persistence with optimized schema  
+- Apache Airflow orchestration with scheduling  
+- Comprehensive logging and error handling  
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 Data Sources (CSVs)
@@ -57,7 +57,7 @@ Data Sources (CSVs)
 | **Python 3.8+** | Core programming language |
 | **SQLAlchemy** | Database ORM |
 
-## 📦 Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher
 - PostgreSQL 12 or higher
@@ -65,7 +65,7 @@ Data Sources (CSVs)
 - 2GB RAM minimum
 - Unix-like shell (Bash/Zsh) or PowerShell on Windows
 
-## 🚀 Installation
+## Installation
 
 ### 1. Clone the Repository
 
@@ -108,11 +108,11 @@ Create a `.env` file in the project root:
 
 ```env
 # Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=postgres
-DB_NAME=urbanmove
+DB_HOST=add your details
+DB_PORT=add your details
+DB_USER=add your details
+DB_PASSWORD=add your details
+DB_NAME=add your details
 
 # Airflow Configuration
 AIRFLOW_HOME=./airflow
@@ -138,7 +138,7 @@ airflow users create \
     --password admin
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 urbanmove_pipeline/
@@ -179,9 +179,9 @@ python etl_pipeline.py
 
 Output:
 ```
-📂 Extracting ridership data...
+ Extracting ridership data...
    → Loaded X rows, Y columns
-✅ Data processing complete!
+Data processing complete!
 ```
 
 ### Option 2: Generate Test Data
@@ -228,7 +228,7 @@ python db_setup.py
 
 Initializes the database with empty tables and configuration.
 
-## 📊 Database Schema
+##  Database Schema
 
 ### Table 1: `ridership`
 
@@ -320,7 +320,7 @@ with DAG(
 )
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: PostgreSQL Connection Error
 
@@ -370,7 +370,7 @@ for chunk in pd.read_csv('data/ridership.csv', chunksize=chunksize):
 tail -f airflow/logs/urbanmove_daily_pipeline/
 ```
 
-## 📝 Development Workflow
+## Development Workflow
 
 1. **Create test data**: `python scripts/generate_data.py`
 2. **Test ETL locally**: `python scripts/etl_pipeline.py`
@@ -378,18 +378,18 @@ tail -f airflow/logs/urbanmove_daily_pipeline/
 4. **Monitor execution**: Use Airflow Web UI
 5. **Query results**: Use pgAdmin or `psql`
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Apache Airflow Documentation](https://airflow.apache.org/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 - [Pandas Documentation](https://pandas.pydata.org/)
 - [SQLAlchemy Documentation](https://www.sqlalchemy.org/)
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see LICENSE file for details.
 
-## 👥 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -399,7 +399,7 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📧 Support
+## Support
 
 For questions or issues, please open an issue in the repository or contact the development team.
 
