@@ -1,7 +1,4 @@
-"""
-STEP 2: Create the PostgreSQL database and tables
-Run this once to set up your database
-"""
+
 
 import psycopg2
 from psycopg2 import sql
@@ -36,9 +33,9 @@ def create_database():
     
     if not exists:
         cursor.execute("CREATE DATABASE urbanmove")
-        print("✅ Database 'urbanmove' created successfully!")
+        print("Database 'urbanmove' created successfully!")
     else:
-        print("ℹ️  Database 'urbanmove' already exists, skipping creation.")
+        print("Database 'urbanmove' already exists, skipping creation.")
     
     cursor.close()
     conn.close()
@@ -57,10 +54,10 @@ def create_tables():
     try:
         cursor.execute(sql_script)
         conn.commit()
-        print("✅ All tables created successfully!")
+        print("All tables created successfully!")
     except Exception as e:
         conn.rollback()
-        print(f"❌ Error creating tables: {e}")
+        print(f"Error creating tables: {e}")
     finally:
         cursor.close()
         conn.close()
@@ -70,11 +67,11 @@ def test_connection():
     """Test database connection"""
     try:
         conn = psycopg2.connect(**DB_CONFIG)
-        print("✅ Database connection successful!")
+        print("Database connection successful!")
         conn.close()
         return True
     except Exception as e:
-        print(f"❌ Connection failed: {e}")
+        print(f"Connection failed: {e}")
         return False
 
 
@@ -83,4 +80,4 @@ if __name__ == "__main__":
     create_database()
     test_connection()
     create_tables()
-    print("\n✅ Database setup complete!")
+    print("\n Database setup complete!")
